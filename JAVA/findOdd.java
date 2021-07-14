@@ -10,8 +10,5 @@ public class findOdd {
                                 System.out.println(i);
                         }
                 }
-
-
-
         }
 }
