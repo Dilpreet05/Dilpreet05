@@ -1,3 +1,3 @@
 - 👋 Hi, I’m @Dilpreet05
-- 👀 I’m interested in games and code!
-- 🌱 I’m currently learning java!
+- 👀 I’m interested in gaming and coding!
+- 🌱 I’m currently learning java and done very little python.
