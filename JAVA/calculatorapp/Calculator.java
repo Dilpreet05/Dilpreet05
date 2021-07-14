@@ -107,7 +107,6 @@ public class Calculator {
                 System.out.println(a + "^" + b + " = " + (Math.pow(a, b)));
         }
 
-        // testing testing
 
 
 }
