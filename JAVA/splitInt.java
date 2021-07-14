@@ -20,7 +20,7 @@ public class splitInt{
                         sum = sum + y[z];
                         z--;
                 }
-                System.out.println("The sum of the 3 numbers are : " + sum);
+                System.out.println("The sum of the numbers are : " + sum);
 
 
         }
