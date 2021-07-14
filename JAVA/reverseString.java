@@ -13,12 +13,5 @@ public class reverseString {
                         char reverse = input.charAt(i);
                         System.out.print(reverse);
                 }
-
-
-                
-
-
-
-
         }
 }
