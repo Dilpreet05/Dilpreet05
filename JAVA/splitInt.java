@@ -19,9 +19,8 @@ public class splitInt{
                 while (z >= 0) {
                         sum = sum + y[z];
                         z--;
-
                 }
-                System.out.println(sum);
+                System.out.println("The sum of the 3 numbers are : " + sum);
 
 
         }
