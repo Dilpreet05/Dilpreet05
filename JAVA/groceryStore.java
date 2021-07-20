@@ -32,7 +32,7 @@ public class groceryStore {
                                         totalCost += babyItems[i].equals("sippy cups") ? 10.00 : 0;
                                 }
                                 System.out.println("Current Total Cost: " + totalCost); 
-                                System.out.println("Is there anything else you would like to purchace? Type \"exit\" to checkout.");
+                                System.out.println("Is there anything else you would like to purchace? Type \"checkout\" to complete.");
                                 shop();
                                 break;
 
@@ -52,7 +52,7 @@ public class groceryStore {
                                         totalCost += bakeryItems[i].equals("pie") ? 9.99 : 0;
                                 }
                                 System.out.println("Current Total Cost: " + totalCost); 
-                                System.out.println("Is there anything else you would like to purchace? Type \"exit\" to checkout.");
+                                System.out.println("Is there anything else you would like to purchace? Type \"checkout\" to complete.");
                                 shop();
                                 break;
                                 
@@ -73,7 +73,7 @@ public class groceryStore {
                                         totalCost += dairyItems[i].equals("yogurt") ? 4.99 : 0;
                                 }
                                 System.out.println("Current Total Cost: " + totalCost); 
-                                System.out.println("Is there anything else you would like to purchace? Type \"exit\" to checkout.");
+                                System.out.println("Is there anything else you would like to purchace? Type \"checkout\" to complete.");
                                 shop();
                                 break;
 
@@ -84,14 +84,29 @@ public class groceryStore {
                                 String meatItem = scan.nextLine().toLowerCase();
                                 String[] meatItems = meatItem.split(", ");
                                 for (int i = 0; i < meatItems.length; i++){
-
+                                        totalCost += meatItems[i].equals("beef") ?  18.00: 0;
+                                        totalCost += meatItems[i].equals("chicken") ?  7.99: 0;
+                                        totalCost += meatItems[i].equals("pork") ?  9.99: 0;
                                 }                                
                                 System.out.println("Current Total Cost: " + totalCost); 
-                                System.out.println("Is there anything else you would like to purchace? Type \"exit\" to checkout.");
+                                System.out.println("Is there anything else you would like to purchace? Type \"checkout\" to complete.");
                                 shop();
                                 break;
 
-                        case"exit":
+                        case"produce":
+                        // apple banana cherry 
+                                System.out.println("\nWhat items would you like?");
+                                System.out.print("Apple - $6.99 - 2 lb\nBanana - $1.99 - 5-7 count\nCherry - $8.99 - 2.25 lb\nOrange - $2.99 - 3 lb\nStrawberry - $2.99 - 2 lb");
+                                String produceItem = scan.nextLine().toLowerCase();
+                                String[] produceItems = produceItem.split(", ");
+                                for (int i = 0; i < produceItems.length; i++){
+                                        totalCost += produceItems[i].equals("apple") ?  6.99: 0;
+                                        totalCost += produceItems[i].equals("banana") ?  1.99: 0;
+                                        totalCost += produceItems[i].equals("cherry") ?  8.99: 0;
+                                        totalCost += produceItems[i].equals("orange") ?  2.99: 0;
+                                        totalCost += produceItems[i].equals("strawberry") ?  2.99: 0;
+                                }      
+                        case"checkout":
                                 System.out.printf("FINAL COST: %f", totalCost);
                                 break;
 
