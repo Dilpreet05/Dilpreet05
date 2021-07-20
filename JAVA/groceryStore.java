@@ -13,7 +13,7 @@ public class groceryStore {
 
         private static void shop(){
                 // totalCost += Items[i].equals("") ?  : 0;
-                System.out.print("BABY\nBAKERY\nDAIRY\nDELI\nFROZEN\nGLUTEN-FREE\nMEAT\nPRODUCE\nSEAFOOD\nENTER: ");
+                System.out.print("BABY\nBAKERY\nDAIRY\nMEAT\nPRODUCE\nENTER: ");
                 String department = scan.nextLine().toLowerCase();
                 
                 switch(department){
@@ -24,7 +24,6 @@ public class groceryStore {
                                 System.out.print("Baby Formula - $34.99 - 27.4 Oz\nClothing - $14.99\nDiapers - $44.99 - 70 count\nFood Blend - $24.99 - 24 count\nSippy Cups - $10.00\nSeperated by Commas\nENTER YOUR ITEMS: ");
                                 String babyItem = scan.nextLine().toLowerCase();
                                 String[] babyItems = babyItem.split(", ");
-                                
                                 for (int i = 0; i < babyItems.length; i++){
                                         totalCost += babyItems[i].equals("baby formula") ? 34.99 : 0;
                                         totalCost += babyItems[i].equals("clothing") ? 14.99 : 0;
@@ -78,8 +77,22 @@ public class groceryStore {
                                 shop();
                                 break;
 
+                        case"meat":
+
+                                System.out.println("\nWhat items would you like?");
+                                System.out.print("Beef - $18.00 - 2.25 - 3.38 lb\nChicken - 7.99 - 1 - 1.45 lb\nPork - $9.99 - 1.5 - 3.5 lb");
+                                String meatItem = scan.nextLine().toLowerCase();
+                                String[] meatItems = meatItem.split(", ");
+                                for (int i = 0; i < meatItems.length; i++){
+
+                                }                                
+                                System.out.println("Current Total Cost: " + totalCost); 
+                                System.out.println("Is there anything else you would like to purchace? Type \"exit\" to checkout.");
+                                shop();
+                                break;
+
                         case"exit":
-                                System.out.println("FINAL COST: " + totalCost);
+                                System.out.printf("FINAL COST: %f", totalCost);
                                 break;
 
                         default:
