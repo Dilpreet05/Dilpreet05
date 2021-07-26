@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class quitGame {
+public class quizGame {
         public static void main(String[] args) {
                 
                 Scanner scan = new Scanner(System.in);
