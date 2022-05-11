@@ -2,10 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class AttendenceChart{
-		
-	static int count = 0;
-	
+public class AttendenceChart{	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("ATTENDENCE CHART");
 		frame.setPreferredSize(new Dimension(400,225));
@@ -18,24 +15,20 @@ public class AttendenceChart{
 			b.setBackground(Color.WHITE);
 			
 			b.addActionListener(
-					new ActionListener(){					
-						public void actionPerformed(ActionEvent e) {
-							
-							if(b.getBackground().equals(Color.WHITE)) {
-								b.setBackground(Color.GREEN);
-							}else if(b.getBackground().equals(Color.GREEN)) {
-								b.setBackground(Color.RED);
-							}else if(b.getBackground().equals(Color.RED)){
-								b.setBackground(Color.YELLOW);
-							}else if (b.getBackground().equals(Color.YELLOW)){
-								b.setBackground(Color.WHITE);
-							}
-
-						}
+				new ActionListener(){					
+					public void actionPerformed(ActionEvent e) {
 						
-					}
-					
-					
+						if(b.getBackground().equals(Color.WHITE)) {
+							b.setBackground(Color.GREEN);
+						}else if(b.getBackground().equals(Color.GREEN)) {
+								b.setBackground(Color.RED);
+						}else if(b.getBackground().equals(Color.RED)){
+							b.setBackground(Color.YELLOW);
+						}else if (b.getBackground().equals(Color.YELLOW)){
+							b.setBackground(Color.WHITE);
+						}
+					}	
+				}
 			);
 			
 			
