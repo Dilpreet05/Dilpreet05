@@ -29,6 +29,8 @@ public class Elliptic_DS {
 		int bInput;
 		
 		// user in
+		System.out.print("<><><> Program Elliptic <><><>\n\n");
+		
 		System.out.print("Enter range for y: ");
 		yInput = scan.nextInt();
 		
