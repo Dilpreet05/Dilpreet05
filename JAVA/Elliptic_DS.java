@@ -11,6 +11,8 @@
  * R4: 6-sept-2022 Dilpreet Singh - removed the cycleY method call and transfered code into the main method for extra speed.
  * R4: 6-sept-2022 Dilpreet Singh - Switched from many methods to just using the main method with 4 for loops.
  * R6: 6-sept-2022 Dilpreet Singh - added more comments.
+ * R7: 6-sept-2022 Dilpreet Singh - changed how the program gets to the algorithm.
+ *
  */
 import java.util.Scanner;
 
@@ -53,20 +55,53 @@ public class Elliptic_DS {
 		long et = System.nanoTime();
 
 		// Your algorithm goes here
-		// finds first solutions from 0 to yInput
+		// brute forces solutions, when the loops reach the first inner conditional, it will proceed similarly to a binary search.
 		boolean abort = false;
 		int count = 0;
 		for(int y = 0; y <= yInput; y++) {
+			
 			for(int x = -xInput; x <= xInput && !abort; x++) {
+				
 				for(int a = -aInput; a <= aInput && !abort; a++) {
-					for(int b = -bInput; b <= bInput && !abort; b++) {
-						if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(b, 2)) != 0)) {		
-							System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-							abort = true;
-							count++;
-							break;
-						}					
+					
+					if((Math.pow(y, 2) > Math.pow(x, 3) + (x*a) + 0)) {
+						
+						
+						for(int b = 0; b <= bInput && !abort; b++) {
+							if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
+								
+								System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+								abort = true;
+								count++;
+								
+							}					
+						}
+						
+						
+					}else if((Math.pow(y, 2) < Math.pow(x, 3) + (x*a) + 0)){
+						
+						
+						for(int b = 0; b >= -bInput && !abort; b--) {
+							if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(b, 2)) != 0)) {		
+							
+								System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+								abort = true;
+								count++;
+							
+							}					
+						}
+						
+						
+					}else if(4*Math.pow(a, 3) + (27*Math.pow(0, 2)) != 0){
+						
+						System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, 0);
+						
+					}else {
+						
+						abort = true;
+					
 					}
+
 				}
 			}
 			if(!abort) {
@@ -74,8 +109,10 @@ public class Elliptic_DS {
 			}
 			abort = false;
 		}
+
 		
-		System.out.printf("\nSolution(s) found for %d values of y\n\n.", count);
+		System.out.printf("\nSolution(s) found for %d values of y.\n\n", count);
+
 
 
 		// ET end - insert at end of algorithm of interest
