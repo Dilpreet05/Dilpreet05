@@ -59,65 +59,65 @@ public class Elliptic_DS {
 		boolean abort = false;
 		int count = 0;
 		for(int y = 0; y <= yInput; y++) {
-			
-			for(int x = -xInput; x <= xInput && !abort; x++) {
-				
-				for(int a = -aInput; a <= aInput && !abort; a++) {
-					
+
+			for(int x =  xInput; x >= -xInput && !abort; x--) {
+
+				for(int a = aInput; a >= -aInput && !abort; a--) {
+
 					if((Math.pow(y, 2) > Math.pow(x, 3) + (x*a) + 0)) {
 						if((Math.pow(y, 2) > Math.pow(x, 3) + (x*a) + bInput/2)) {
 							for(int b = bInput/2; b <= bInput && !abort; b++) {
 								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
-									
+
 									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
 									abort = true;
 									count++;
-									
+
 								}					
 							}
 						}else {
 							for(int b = bInput/2; b >= 0 && !abort; b--) {
 								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
-									
+
 									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
 									abort = true;
 									count++;
-									
+
 								}	
 							}
 						}
-						
+
 					}else if((Math.pow(y, 2) < Math.pow(x, 3) + (x*a) + 0)){
 						if(Math.pow(y, 2) < Math.pow(x, 3) + (x*a) + -bInput/2) {
 							for(int b = (-bInput)/2; b >= -bInput; b--) {
 								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
-									
+
 									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
 									abort = true;
 									count++;
-									
+
 								}	
 							}	
 						}else{
 							for(int b = -bInput; b <= 0; b++) {
 								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
-									
+
 									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
 									abort = true;
 									count++;
-									
+
 								}	
 							}
 						}
-						
+
 					}else if(4*Math.pow(a, 3) + (27*Math.pow(0, 2)) != 0){
-						
+
 						System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, 0);
-						
+
 					}else {
-						
+
 						abort = true;
-					
+
 					}
 
 				}
