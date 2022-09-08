@@ -9,13 +9,13 @@
  * R2: 3-sept-2022 Dilpreet Singh - added 4 for loops to evaluate the solutions using the given formula
  * R3: 4-sept-2022 Dilpreet Singh - switched from 4 nested loops to 4 separate methods containing for loops for
  * R4: 6-sept-2022 Dilpreet Singh - removed the cycleY method call and transfered code into the main method for extra speed.
- * R4: 6-sept-2022 Dilpreet Singh - Switched from many methods to just using the main method with 4 for loops.
+ * R5: 6-sept-2022 Dilpreet Singh - switched from 3 static methods to 4 for loops inside the main method.
  * R6: 6-sept-2022 Dilpreet Singh - added more comments.
- * R7: 6-sept-2022 Dilpreet Singh - changed how the program gets to the algorithm.
- *
+ * R7: 6-sept-2022 Dilpreet Singh - changed algorithm.
+ * R8: 8-sept-2022 Dilpreet Singh - changed algorithm
+ * 
  */
 import java.util.Scanner;
-
 
 // y^2 = x^3 + Ax + B
 public class Elliptic_DS {
@@ -65,32 +65,50 @@ public class Elliptic_DS {
 				for(int a = -aInput; a <= aInput && !abort; a++) {
 					
 					if((Math.pow(y, 2) > Math.pow(x, 3) + (x*a) + 0)) {
-						
-						
-						for(int b = 0; b <= bInput && !abort; b++) {
-							if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
-								
-								System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-								abort = true;
-								count++;
-								
-							}					
+						if((Math.pow(y, 2) > Math.pow(x, 3) + (x*a) + bInput/2)) {
+							for(int b = bInput/2; b <= bInput && !abort; b++) {
+								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}					
+							}
+						}else {
+							for(int b = bInput/2; b >= 0 && !abort; b--) {
+								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}	
+							}
 						}
-						
 						
 					}else if((Math.pow(y, 2) < Math.pow(x, 3) + (x*a) + 0)){
-						
-						
-						for(int b = 0; b >= -bInput && !abort; b--) {
-							if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(b, 2)) != 0)) {		
-							
-								System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-								abort = true;
-								count++;
-							
-							}					
+						if(Math.pow(y, 2) < Math.pow(x, 3) + (x*a) + -bInput/2) {
+							for(int b = (-bInput)/2; b >= -bInput; b--) {
+								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}	
+							}	
+						}else{
+							for(int b = -bInput; b <= 0; b++) {
+								if((Math.pow(y, 2) == Math.pow(x, 3) + (x*a) + b) && ((4*Math.pow(a, 3)) + (27*Math.pow(0, 2)) != 0)) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}	
+							}
 						}
-						
 						
 					}else if(4*Math.pow(a, 3) + (27*Math.pow(0, 2)) != 0){
 						
