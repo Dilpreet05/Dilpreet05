@@ -12,7 +12,8 @@
  * R5: 6-sept-2022 Dilpreet Singh - switched from 3 static methods to 4 for loops inside the main method.
  * R6: 6-sept-2022 Dilpreet Singh - added more comments.
  * R7: 6-sept-2022 Dilpreet Singh - changed algorithm.
- * R8: 8-sept-2022 Dilpreet Singh - changed algorithm
+ * R8: 8-sept-2022 Dilpreet Singh - changed algorithm.
+ * R9: 9-sept-2022 Dilpreet Singh - changed algorithm.
  * 
  */
 import java.util.Scanner;
@@ -127,7 +128,6 @@ public class Elliptic_DS {
 			}
 			abort = false;
 		}
-
 
 		
 		System.out.printf("\nSolution(s) found for %d values of y.\n\n", count);
