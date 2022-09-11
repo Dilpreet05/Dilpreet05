@@ -11,9 +11,10 @@
  * R4: 6-sept-2022 Dilpreet Singh - removed the cycleY method call and transfered code into the main method for extra speed.
  * R5: 6-sept-2022 Dilpreet Singh - switched from 3 static methods to 4 for loops inside the main method.
  * R6: 6-sept-2022 Dilpreet Singh - added more comments.
- * R7: 6-sept-2022 Dilpreet Singh - changed algorithm.
- * R8: 8-sept-2022 Dilpreet Singh - changed algorithm.
- * R9: 9-sept-2022 Dilpreet Singh - changed algorithm.
+ * R7: 6-sept-2022 Dilpreet Singh - changed to faster algorithm.
+ * R8: 8-sept-2022 Dilpreet Singh - changed to faster algorithm.
+ * R9: 9-sept-2022 Dilpreet Singh - changed to faster algorithm.
+ * R10: 11-sept-2022 Dilpreet Singh - Made algorithm faster and much more compact.
  * 
  */
 import java.util.Scanner;
@@ -55,8 +56,8 @@ public class Elliptic_DS {
 		// ET start - insert at start of algorithm of interest
 		long et = System.nanoTime();
 
-		// Your algorithm goes here
-		// brute forces solutions, when the loops reach the first inner conditional, it will proceed similarly to a binary search.
+		// Your algorithm goes here.
+		// brute force with extra steps, inspired from a binary search
 		boolean abort = false;
 		int count = 0;
 		for(int y = 0; y <= yInput; y++) {
@@ -65,62 +66,31 @@ public class Elliptic_DS {
 				
 				for(int a = aInput; a >= -aInput && !abort; a--) {
 					
-					if((y*y > (x*x*x) + (x*a) + 0)) {
-						if((y*y > (x*x*x) + (x*a) + bInput/2)) {
-							for(int b = bInput/2; b <= bInput && !abort; b++) {
-								if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}					
-							}
-						}else {
-							for(int b = bInput/2; b >= 0 && !abort; b--) {
-								if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}	
-							}
-						}
-						
-					}else if((y*y < (x*x*x) + (x*a) + 0)){
-						if(y*y < (x*x*x) + (x*a) + -bInput/2) {
-							for(int b = (-bInput)/2; b >= -bInput; b--) {
-								if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}	
-							}	
-						}else{
-							for(int b = -bInput; b <= 0; b++) {
-								if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}	
-							}
-						}
-						
-					}else if(4*(a*a*a) != 0){
-						
-						System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, 0);
-						
-					}else {
-						
-						abort = true;
-					
-					}
+					for(int b = 0; b >= -bInput && b <= bInput && !abort;) {
+						if((y*y == (x*x*x) + (x*a) + b) || (y*y == (x*x*x) + (x*a) + 0) && 4*(a*a*a) + (27*(b*b)) != 0) {
+							System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+							count++;
+							abort = true;
+						}else if(y*y > (x*x*x) + (x*a) + b) {
+							if( y*y <  (x*x*x) + (x*a) + b+(bInput/2)) {
+								b++;
+							}else 
+								b+=(bInput/2);
+							
+						}else if(y*y < (x*x*x) + (x*a) + b){
+							
+							if(y*y > (x*x*x) + (x*a) - b+(bInput/2)) {
+								b--;
+							}else 
+								b-=(bInput/2);
 
+							
+						}else {
+							abort = true;
+						}
+						
+						
+					}
 				}
 			}
 			if(!abort) {
