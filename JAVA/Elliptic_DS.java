@@ -60,78 +60,90 @@ public class Elliptic_DS {
 		// brute force with extra steps, inspired from a binary search
 		boolean abort = false;
 		int count = 0;
-		for(int y = 0; y <= yInput; y++) {
-			
-			for(int x = xInput; x >= 0 && !abort; x--) {
-				
-				for(int a = aInput; a >= -aInput && !abort; a--) {
-					
-					
-					
-					if((y*y > (x*x*x) + (x*a) + 0)) {
-						if((y*y > (x*x*x) + (x*a) + bInput/2)) {
-							for(int b = bInput/2; b <= bInput && !abort; b++) {
-								if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}					
+			for(int y = 0; y <= yInput; y++) {
+
+				for(int x = xInput; x >= 0 && !abort; x--) {
+
+					for(int a = aInput; a >= -aInput && !abort; a--) {
+
+						if((y*y > (x*x*x) + (x*a) + 0)) {
+							if((y*y > (x*x*x) + (x*a) + bInput/2)) {
+								for(int b = bInput/2; b <= bInput && !abort; b++) {
+									if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
+
+										System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+										abort = true;
+										count++;
+
+									}					
+								}
+							}else {
+								for(int b = bInput/2; b >= 0 && !abort; b--) {
+									if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
+
+										System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+										abort = true;
+										count++;
+
+									}	
+								}
 							}
+
+						}else if((y*y < (x*x*x) + (x*a) + 0)){
+							if(y*y < (x*x*x) + (x*a) + -bInput/2) {
+								for(int b = (-bInput)/2; b >= -bInput; b--) {
+									if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
+
+										System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+										abort = true;
+										count++;
+
+									}	
+								}	
+							}else{
+								for(int b = -bInput; b <= 0; b++) {
+									if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
+
+										System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+										abort = true;
+										count++;
+
+									}	
+								}
+							}
+
+						}else if(4*(a*a*a) != 0){
+
+							System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, 0);
+							count++;
+							abort = true;
+
 						}else {
-							for(int b = bInput/2; b >= 0 && !abort; b--) {
-								if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}	
-							}
+
+							abort = true;
+
 						}
-						
-					}else if((y*y < (x*x*x) + (x*a) + 0)){
-						if(y*y < (x*x*x) + (x*a) + -bInput/2) {
-							for(int b = (-bInput)/2; b >= -bInput; b--) {
-								if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}	
-							}	
-						}else{
-							for(int b = -bInput; b <= 0; b++) {
-								if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
-									
-									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-									abort = true;
-									count++;
-									
-								}	
-							}
-						}
-						
-					}else if(4*(a*a*a) != 0){
-						
-						System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, 0);
-						count++;
-						abort = true;
-						
-					}else {
-						
-						abort = true;
-					
 					}
 				}
+				if(!abort) {
+					System.out.printf("%d not found!\n", y);
+				}
+				abort = false;
 			}
-			if(!abort) {
-				System.out.printf("%d not found!\n", y);
-			}
-			abort = false;
+
+
+
+
+			System.out.printf("\nSolution(s) found for %d values of y.", count);
+
+			et = System.nanoTime() - et;
+
+
+			// elapsed time and total solutions found
+			System.out.printf("\n\nElapsed time: %.2E nsecs", (double) et);
+
 		}
+	}	
 
 
 		
