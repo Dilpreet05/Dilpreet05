@@ -66,30 +66,64 @@ public class Elliptic_DS {
 				
 				for(int a = aInput; a >= -aInput && !abort; a--) {
 					
-					for(int b = 0; b >= -bInput && b <= bInput && !abort;) {
-						if((y*y == (x*x*x) + (x*a) + b) || (y*y == (x*x*x) + (x*a) + 0) && 4*(a*a*a) + (27*(b*b)) != 0) {
-							System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-							count++;
-							abort = true;
-						}else if(y*y > (x*x*x) + (x*a) + b) {
-							if( y*y <  (x*x*x) + (x*a) + b+(bInput/2)) {
-								b++;
-							}else 
-								b+=(bInput/2);
-							
-						}else if(y*y < (x*x*x) + (x*a) + b){
-							
-							if(y*y > (x*x*x) + (x*a) - b+(bInput/2)) {
-								b--;
-							}else 
-								b-=(bInput/2);
-
-							
+					
+					
+					if((y*y > (x*x*x) + (x*a) + 0)) {
+						if((y*y > (x*x*x) + (x*a) + bInput/2)) {
+							for(int b = bInput/2; b <= bInput && !abort; b++) {
+								if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}					
+							}
 						}else {
-							abort = true;
+							for(int b = bInput/2; b >= 0 && !abort; b--) {
+								if(y*y == (x*x*x) + (x*a) + b && 4*(a*a*a) + (27*(b*b)) != 0) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}	
+							}
 						}
 						
+					}else if((y*y < (x*x*x) + (x*a) + 0)){
+						if(y*y < (x*x*x) + (x*a) + -bInput/2) {
+							for(int b = (-bInput)/2; b >= -bInput; b--) {
+								if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}	
+							}	
+						}else{
+							for(int b = -bInput; b <= 0; b++) {
+								if((y*y == (x*x*x) + (x*a) + b) && 4*(a*a*a) + (27*(b*b)) != 0) {	
+									
+									System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
+									abort = true;
+									count++;
+									
+								}	
+							}
+						}
 						
+					}else if(4*(a*a*a) != 0){
+						
+						System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, 0);
+						count++;
+						abort = true;
+						
+					}else {
+						
+						abort = true;
+					
 					}
 				}
 			}
@@ -98,6 +132,7 @@ public class Elliptic_DS {
 			}
 			abort = false;
 		}
+
 
 		
 		System.out.printf("\nSolution(s) found for %d values of y.\n\n", count);
