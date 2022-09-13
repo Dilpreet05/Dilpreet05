@@ -59,6 +59,7 @@ public class Elliptic_DS {
 		// Your algorithm goes here.
 		// brute force with extra steps, inspired from a binary search
 		boolean abort = false;
+		StringBuilder str = new StringBuilder();
 		int count = 0;
 		for(int y = 0; y <= yInput; y++) {
 			
@@ -67,30 +68,32 @@ public class Elliptic_DS {
 				for(int a = aInput; a >= -aInput && !abort; a--) {
 					
 
-						for(int b = 0; b >= -bInput && b <= bInput && !abort;) {
-							if((y*y == x*x*x + x*a + b) && ((4*a*a*a) + (27*b*b) != 0)){
-								System.out.printf("y: %d, x: %d, a: %d, b: %d\n", y, x, a, b);
-								count++;
-								abort = true;
-							}else if(y*y > (x*x*x) + (x*a) + b) {
-								if( y*y <  (x*x*x) + (x*a) + b+(bInput/2)) {
-									b++;
-								}else 
-									b+=bInput/2;
-								
-							}else if(y*y < (x*x*x) + (x*a) + b){
-								
-								if(y*y > (x*x*x) + (x*a) - b+bInput/2 ) {
-									b--;
-								}else 
-									b-=bInput/2;
+					for(int b = 0; b >= -bInput && b <= bInput;) {
+						if((y*y == x*x*x + x*a + b) && ((4*a*a*a) + (27*b*b) != 0)){
+							str.append("y: " + y + ", x:" + x + ", a: " + a + ", b: " + b + "\n");
+							count++;
+							abort = true;
+							break;
+						}else if(y*y > (x*x*x) + (x*a) + b) {
+							if( y*y <  (x*x*x) + (x*a) + b+(bInput/2)) {
+								b++;
+							}else 
+								b+=bInput/2;
 
-								
-							}else if(4*a*a*a + 27*b*b == 0){
-								break;
-							}else {
-								abort = true;
-							}
+						}else if(y*y < (x*x*x) + (x*a) + b){
+
+							if(y*y > (x*x*x) + (x*a) - b+bInput/2 ) {
+								b--;
+							}else 
+								b-=bInput/2;
+
+
+						}else if(4*a*a*a + 27*b*b == 0){
+							break;
+						}else {
+							abort = true;
+						}
+
 
 						
 					}
