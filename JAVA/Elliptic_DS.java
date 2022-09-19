@@ -17,9 +17,12 @@
  * R10: 11-sept-2022 Dilpreet Singh - Made algorithm faster and much more compact.
  * 
  */
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 // y^2 = x^3 + Ax + B
+// y^2 - x^3 - Ax = B
 public class Elliptic_DS {
  
 	public static void main(String[] args) {
@@ -56,75 +59,40 @@ public class Elliptic_DS {
 		// ET start - insert at start of algorithm of interest
 		long et = System.nanoTime();
 
-		// Your algorithm goes here.
-		// brute force with extra steps, inspired from a binary search
+		// Your algorithm goes here
+		// brute forces solutions, when the loops reach the first inner conditional, it will proceed similarly to a binary search.
 		boolean abort = false;
-		StringBuilder str = new StringBuilder();
 		int count = 0;
+		StringBuilder str = new StringBuilder();
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		for (int b = -bInput; b < bInput; b++) {
+			map.put(b, null);
+		}
+	
+		
 		for(int y = 0; y <= yInput; y++) {
 			
 			for(int x = xInput; x >= 0 && !abort; x--) {
 				
 				for(int a = aInput; a >= -aInput && !abort; a--) {
-					
-
-					for(int b = 0; b >= -bInput && b <= bInput;) {
-						if((y*y == x*x*x + x*a + b) && ((4*a*a*a) + (27*b*b) != 0)){
-							str.append("y: " + y + ", x:" + x + ", a: " + a + ", b: " + b + "\n");
-							count++;
-							abort = true;
-							break;
-						}else if(y*y > (x*x*x) + (x*a) + b) {
-							if( y*y <  (x*x*x) + (x*a) + b+(bInput/2)) {
-								b++;
-							}else 
-								b+=bInput/2;
-
-						}else if(y*y < (x*x*x) + (x*a) + b){
-
-							if(y*y > (x*x*x) + (x*a) - b+bInput/2 ) {
-								b--;
-							}else 
-								b-=bInput/2;
-
-
-						}else if(4*a*a*a + 27*b*b == 0){
-							break;
-						}else {
-							abort = true;
-						}
-
-
-						
+					if(map.containsKey(((y*y) - (x*x*x) - (a*x))) && ((4*a*a*a) + (27*((y*y) - (x*x*x) - (a*x))*((y*y) - (x*x*x) - (a*x)))) != 0){
+						str.append("y: " + y + ", x:" + x + ", a: " + a + ", b: " + ((y*y) - (x*x*x) - (a*x)) + "\n");
+						count++;
+						abort = true;
 					}
-					
-					
+
 				}
 			}
 			if(!abort) {
-				System.out.printf("%d not found!\n", y);
+				str.append( y + " not found!\n");
 			}
 			abort = false;
-		}
-
-
-
-			System.out.printf("\nSolution(s) found for %d values of y.", count);
-
-			et = System.nanoTime() - et;
-
-
-			// elapsed time and total solutions found
-			System.out.printf("\n\nElapsed time: %.2E nsecs", (double) et);
-
-		}
-	}	
-
+		}		
+	
 
 		
-		System.out.printf("\nSolution(s) found for %d values of y.\n\n", count);
-
-
+		str.append("\nSolution(s) found for " + count + " values of y.");
+		System.out.println(str);
 
 		// ET end - insert at end of algorithm of interest
 		et = System.nanoTime() - et;
@@ -134,3 +102,4 @@ public class Elliptic_DS {
 		System.out.printf("Elapsed time: %.2E nsecs", (double) et);
 	}
 }
+
