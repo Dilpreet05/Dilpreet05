@@ -1,4 +1,4 @@
 - Hi, I’m @Dilpreet05
 - I’m interested in gaming and coding!
-- I’m currently learning java and done very little python.
-- Reach me on discord Dos#7252
+- I’m currently learning java, Arduino C, and python.
+- Reach me on discord dp#9963
