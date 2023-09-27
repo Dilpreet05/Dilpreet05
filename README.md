@@ -1,4 +1,5 @@
 - Hi, I’m @Dilpreet05
 - I’m interested in gaming and coding!
 - I’m currently learning java, Arduino C, and python.
-- Reach me on discord dp#9963
+- I am taking CS211 @ George Mason University learning about object-oriented programming using Java.
+- Reach me on discord @ dp05
