@@ -1,5 +1,5 @@
 - Hi, I’m @Dilpreet05
-- I’m interested in gaming and coding!
-- I’m currently learning java, Arduino C, and python.
-- I am taking CS211 @ George Mason University learning about object-oriented programming using Java.
+- I’m currently interested in getting internships to gain experience in the field and win as many competitions as possible with my VEXU Team.
+- I’m currently proficient in Java, C++, C, and Arduino C, with minor knowledge in Python.
+- My prevouis and current course load consists of CS211, CS222, ECE240, ECE340, and AP Computer Science A.
 - Reach me on discord @ dp05
