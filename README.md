@@ -1,5 +1,6 @@
 - Hi, I’m @Dilpreet05
 - I’m currently interested in getting internships to gain experience in the field and win as many competitions as possible with my VEXU Team.
+- I am Majoring in Computer Engineering with a Minor in Computer Science, attending GMU (George Mason University)
 - I’m currently proficient in Java, C++, C, and Arduino C, with minor knowledge in Python.
 - My prevouis and current course load consists of CS211, CS222, ECE240, ECE340, and AP Computer Science A.
-- Reach me on discord @ dp05
+- Reach me on discord @ dp05 or via email at dpyuvi05@gmail.com or dsingh35@gmu.edu
